@@ -9,17 +9,16 @@
 
   <body>
     <h1>Etch a sketch</h1>
-    <div class="gridContainer"></div>
-    <label for="Size">Grid Size</label>
+    <div class="gridContainer" oncontextmenu="return false"></div>
     <input id="box" type="range"  min="10" max="50" step="1" value="16" list="gradation"/> 
-    <p>Value: <output id="value"></output></p>
+    <p>Box Size <output class="value"></output></output></p>
 
     <datalist id="gradation"      >
       <option value="10"></option>
-      <option value="20">20</option>
-      <option value="20">30</option>
-      <option value="40">40</option>
-      <option value="50">50</option>
+      <option value="20"></option>
+      <option value="20"></option>
+      <option value="40"></option>
+      <option value="50"></option>
     </datalist>
 
    </body>
