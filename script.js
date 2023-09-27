@@ -1,4 +1,4 @@
-let i=0,gridId,boxSize=16,boxCount;
+let i=0,gridId,boxSize=16,boxCount,flag=0;
 let container= document.querySelector(".gridContainer");
 let size= document.querySelector("#box");
 size.addEventListener("input", createGrid);
@@ -33,36 +33,45 @@ function makeBox(){
         grid.setAttribute(`style`,`height:${x}px; width:${x}px`);
         container.appendChild(grid);
         //console.log(`div ${c} created`);
-    
-        grid.addEventListener('mousedown',function(){
-            gridId=this.id;
-            colorAdd(gridId);
-        
-        }); 
+        grid.addEventListener('mousedown',listener1);
+        grid.addEventListener('mouseover',colorAdd);
+        grid.addEventListener('mouseup',listener2);    
+        grid.addEventListener(`dragstart`,(event) => {
+            event.preventDefault();
+        });
+        grid.addEventListener('drop',(event) => {
+            event.prefventDefault();
+        })
+}
+}
 
-        grid.addEventListener('mouseover',function(){
-            gridId=this.id;
-            colorAdd(gridId);
-        }); 
-    
-}
-}
 console.log("loop parsed");
 
 grid=document.querySelector(".etch");
 
+function listener1(e){
+    flag+=1;
+    console.log(`listener1 executed flag=${flag}`);
+    colorAdd(e);
+}
 
+function listener2(){
+    flag-=1;
+    console.log(`listener2 executed flag=${flag}`);
+}
 
 function colorAdd(e){
     let i,j,k;
     i=Math.floor(Math.random()*255);
     j=Math.floor(Math.random()*255);
     k=Math.floor(Math.random()*255);
-    grid=document.getElementById(e);
+    grid=document.getElementById(e.target.id);
     //grid.setAttribute('style',`background-color: rgb(${i},${j},${k})`);
     //grid.setAttribute('style',`background-color: rgb(0,0,0)`);
+    if(flag==1){
     grid.style.backgroundColor = `rgb(${i},${j},${k})`;
     console.log("color changed successfully");
+    }
     
 }
 
