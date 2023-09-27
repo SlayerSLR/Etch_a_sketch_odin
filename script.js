@@ -1,4 +1,10 @@
-let i=0,gridId,boxSize=16,boxCount,flag=0;
+let i=0,
+    gridId,
+    boxSize=30,
+    boxCount,
+    flag=0,
+    monochrome=false;
+
 let container= document.querySelector(".gridContainer");
 let size= document.querySelector("#box");
 size.addEventListener("input", createGrid);
@@ -39,6 +45,10 @@ function makeBox(){
                 flag+=1;
                 colorAdd(e.target.id);
                 console.log(`listener1 executed flag=${flag}`);
+                if(flag>1){
+                    flag=0;
+                }
+                flagcheck();
             }
             else{e.preventDefault}
         });
@@ -52,6 +62,10 @@ function makeBox(){
                 flag-=1;
                 colorAdd(e.target.id);
                 console.log(`listener2 executed flag=${flag}`);
+                if (flag<0){
+                    flag=1;
+                }
+                flagcheck();
             }
             else(e.preventDefault)
         });
@@ -66,6 +80,12 @@ function makeBox(){
 }
 }
 
+function flagcheck(flag){
+    if(flag>=2 || flag<0){
+        throw new Error("Flag exceeded limit");
+        
+    }
+}
 console.log("loop parsed");
 
 grid=document.querySelector(".etch");
@@ -81,6 +101,17 @@ grid=document.querySelector(".etch");
     console.log(`listener2 executed flag=${flag}`);
 }*/
 
+function mono(){
+    monochrome=true;
+}
+
+function multicolor(){
+    monochrome=false;
+}
+
+function shader(){
+    alert("This feature will be available soon");
+}
 function colorAdd(e){
     let i,j,k;
     i=Math.floor(Math.random()*255);
@@ -90,8 +121,16 @@ function colorAdd(e){
     //grid.setAttribute('style',`background-color: rgb(${i},${j},${k})`);
     //grid.setAttribute('style',`background-color: rgb(0,0,0)`);
     if(flag==1){
-    grid.style.backgroundColor = `rgb(${i},${j},${k})`;
-    console.log(`color of div ${e} changed to rgb(${i},${j},${k})`);
+        if(monochrome){
+            grid.style.backgroundColor = `rgb(0,0,0)`;   
+            console.log(`color of div ${e} changed to rgb(0,0,0)`);
+        }
+
+        else {
+         grid.style.backgroundColor = `rgb(${i},${j},${k})`;
+         console.log(`color of div ${e} changed to rgb(${i},${j},${k})`);
+        }
+    
     }
     
 }
