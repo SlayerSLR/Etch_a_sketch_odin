@@ -64,7 +64,7 @@ body {
    
 }
 
-#colour,#shader {
+#colour,#clear {
     width: 130px;
 }
 
@@ -83,10 +83,8 @@ body {
     text-align: center;
 }
 
-#shader,#colour,#black {
-    background-color: rgb(10,10,10,0.25);
-    border-color: white;
-    color: black;
+#clear,#colour,#black {
+
     height: 30px;
 }
 

@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>Etch a sketch</title>
     <script src="script.js" defer></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js" defer></script> -->
+    <script src="html2canvas.js" defer></script>
     <link rel="stylesheet" href="styles.css">
   </head>
 
@@ -11,7 +13,7 @@
     <h1>Etch a sketch!</h1>
     <div class="bobBox">
       <div class="bobRoss"><img src="bob"></div>
-      <div class="gridContainer" oncontextmenu="return false"></div>
+      <div class="gridContainer" id="g" oncontextmenu="return false"></div>
     </div>
     <h2>Canvas settings</h2>
     <div class="settingsContainer">
@@ -19,7 +21,7 @@
         <div class="colorButton">
           <input id="black" class="canvasSetting" type="button" onclick="mono()" value="Monochrome Mode">
           <input id="colour" class="canvasSetting" type="button" onclick="multicolor()" value="Multicolor Mode">
-          <input id="shader" class="canvasSetting" type="button" onclick="shader()" value="Enable Shading">
+          <input id="clear" class="canvasSetting" type="button" onclick="clearCanvas();" value="Clear Canvas">
         </div>
         <div class="boxSlider">
           <input id="box" type="range"  min="10" max="50" step="1" value="30" list="gradation"/> 
@@ -28,6 +30,7 @@
       </div>
       <input id="save" type="button" value="Save your Masterpiece" onclick="imageSave()">
     </div>
+    <output id="canvasImage"></output>
     <datalist id="gradation"      >
       <option value="10"></option>
       <option value="20"></option>
@@ -36,6 +39,18 @@
       <option value="50"></option>
     </datalist>
 
+    <script>
+      function imageSave() {
+        let element=document.querySelector(".gridContainer");
+        html2canvas(element).then (function(canvas){
+          let newTab=window.open();
+          let imageURL= canvas.toDataURL('image/png');
+          newTab.document.write(`<img src="`+imageURL+`"/>`);
+      })
+      }
+     
+   
+    </script>
    </body>
    
-   </html>
+</html>
