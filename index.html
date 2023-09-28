@@ -14,16 +14,19 @@
       <div class="gridContainer" oncontextmenu="return false"></div>
     </div>
     <h2>Canvas settings</h2>
-    <div class="settingsMenu">
-      <div class="colorButton">
-        <input id="black" class="canvasSetting" type="button" onclick="mono()" value="Monochrome Mode">
-        <input id="colour" class="canvasSetting" type="button" onclick="multicolor()" value="Multicolor Mode">
-        <input id="shader" class="canvasSetting" type="button" onclick="shader()" value="Enable Shading">
+    <div class="settingsContainer">
+      <div class="settingsMenu">
+        <div class="colorButton">
+          <input id="black" class="canvasSetting" type="button" onclick="mono()" value="Monochrome Mode">
+          <input id="colour" class="canvasSetting" type="button" onclick="multicolor()" value="Multicolor Mode">
+          <input id="shader" class="canvasSetting" type="button" onclick="shader()" value="Enable Shading">
+        </div>
+        <div class="boxSlider">
+          <input id="box" type="range"  min="10" max="50" step="1" value="30" list="gradation"/> 
+          <p>Box Size: <output class="value"></output></output></p>
+        </div>  
       </div>
-      <div class="boxSlider">
-        <input id="box" type="range"  min="10" max="50" step="1" value="30" list="gradation"/> 
-        <p>Box Size: <output class="value"></output></output></p>
-      </div>  
+      <input id="save" type="button" value="Save your Masterpiece" onclick="imageSave()">
     </div>
     <datalist id="gradation"      >
       <option value="10"></option>

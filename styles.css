@@ -42,6 +42,18 @@ body {
    
 }
 
+.settingsContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 700px;
+    height: auto;
+}
+
+#save {
+    width: 300px;
+    height: 40px;
+    font-size: 20px;
+}
 
 .colorButton {
     height: 90px;

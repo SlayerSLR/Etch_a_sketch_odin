@@ -82,7 +82,8 @@ function makeBox(){
 
 function flagcheck(flag){
     if(flag>=2 || flag<0){
-        throw new Error("Flag exceeded limit");
+        alert("Counter failed to self correct.If porblems continue,please reload the page");
+        throw new Error("Flag exceeded limit.Reload page");
         
     }
 }
@@ -103,10 +104,12 @@ grid=document.querySelector(".etch");
 
 function mono(){
     monochrome=true;
+    flag=0;
 }
 
 function multicolor(){
     monochrome=false;
+    flag=0;
 }
 
 function shader(){
